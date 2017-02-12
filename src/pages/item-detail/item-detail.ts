@@ -41,7 +41,6 @@ export class ItemDetailPage {
 
 
     deleteItem(){
-    console.log(this.index);
     if(this.index > -1) {
       this.items.splice(this.index, 1);
       this.dataService.save(this.items);
