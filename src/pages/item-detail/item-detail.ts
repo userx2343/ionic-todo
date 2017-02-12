@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, ViewController, NavParams } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { Storage } from '@ionic/storage';
 import { Data } from '../../providers/data';
@@ -17,7 +17,7 @@ export class ItemDetailPage {
 
   public items = [];
  
-  constructor(public navCtrl: NavController, public navParams: NavParams, public storage: Storage, public dataService: Data){
+  constructor(public navCtrl: NavController, public view: ViewController, public navParams: NavParams, public storage: Storage, public dataService: Data){
 
 
   this.dataService.getData().then((todos) => {
@@ -45,6 +45,7 @@ export class ItemDetailPage {
     if(this.index > -1) {
       this.items.splice(this.index, 1);
       this.dataService.save(this.items);
+      this.navCtrl.setRoot(HomePage);
       this.navCtrl.setRoot(HomePage);
     } 
   }

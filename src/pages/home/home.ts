@@ -61,6 +61,40 @@ addItem(){
     });
   }
 
+  editItem(item){
+    let prompt = this.alertCtrl.create({
+      title: 'Rename todo',
+      message: 'Enter the new name of this todo below:',
+      inputs: [
+        {
+          name: 'name'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancel'
+        },
+        {
+          text: 'Save',
+          handler: data => {
+
+            let index: any = this.items.indexOf(item);
+
+            if(index > -1){
+              this.items[index].title = data.name;
+              this.dataService.save(this.items);
+            }
+
+          }
+        }
+      ]
+    });
+
+  prompt.present();
+
+  }
+
+
 
   deleteItem(item){
   	console.log(item);
