@@ -83,6 +83,8 @@ addItem(){
             if(index > -1){
               this.items[index].title = data.name;
               this.dataService.save(this.items);
+              this.navCtrl.setRoot(HomePage);
+              this.navCtrl.setRoot(HomePage);
             }
 
           }
